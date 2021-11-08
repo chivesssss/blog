@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg">
+  <link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7Csource+code+pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chivesssss.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":true,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+<meta name="description" content="字体文件下载从 Google Fonts 下载免费字体，这里我们选择思源黑体 Noto Sans SC。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网页字体设置">
+<meta property="og:url" content="https://chivesssss.github.io/blog/javascript-web-font-settings/">
+<meta property="og:site_name" content="牧野の自留地">
+<meta property="og:description" content="字体文件下载从 Google Fonts 下载免费字体，这里我们选择思源黑体 Noto Sans SC。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-30T14:03:05.000Z">
+<meta property="article:modified_time" content="2021-11-08T03:26:39.949Z">
+<meta property="article:author" content="牧野ξ">
+<meta property="article:tag" content="网页">
+<meta property="article:tag" content="字体">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://chivesssss.github.io/blog/javascript-web-font-settings/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://chivesssss.github.io/blog/javascript-web-font-settings/","path":"javascript-web-font-settings/","title":"网页字体设置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>网页字体设置 | 牧野の自留地</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">牧野の自留地</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">凡是过往 皆为序章</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/blog/./" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/blog/./about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/blog/./tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/blog/./categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/blog/./archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E4%BD%93%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">字体文件下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E4%BD%93%E5%AE%9A%E4%B9%89%E7%BB%86%E8%8A%82"><span class="nav-number">2.</span> <span class="nav-text">字体定义细节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E5%AD%97%E4%BD%93%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">网页字体定义样式</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="牧野ξ"
+      src="/blog/uploads/images/avatar.png">
+  <p class="site-author-name" itemprop="name">牧野ξ</p>
+  <div class="site-description" itemprop="description">自留地，前端笔记，日记，日常记录</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/./archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/./categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/./tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chivesssss" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chivesssss" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ismartgoo@gmail.com" title="E-Mail → mailto:ismartgoo@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.tcmiao.com/" title="https:&#x2F;&#x2F;www.tcmiao.com" rel="noopener" target="_blank">tcmiao</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hentaizhou.github.io/z-blog" title="https:&#x2F;&#x2F;hentaizhou.github.io&#x2F;z-blog" rel="noopener" target="_blank">collie Z</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://chivesssss.github.io/docsify/notes" title="https:&#x2F;&#x2F;chivesssss.github.io&#x2F;docsify&#x2F;notes">notes</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chivesssss.github.io/blog/javascript-web-font-settings/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/uploads/images/avatar.png">
+      <meta itemprop="name" content="牧野ξ">
+      <meta itemprop="description" content="自留地，前端笔记，日记，日常记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牧野の自留地">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          网页字体设置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-30 14:03:05" itemprop="dateCreated datePublished" datetime="2020-10-30T14:03:05+00:00">2020-10-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="字体文件下载"><a href="#字体文件下载" class="headerlink" title="字体文件下载"></a>字体文件下载</h2><p>从 <a target="_blank" rel="noopener" href="https://google-webfonts-helper.herokuapp.com/fonts">Google Fonts</a> 下载免费字体，这里我们选择思源黑体 <code>Noto Sans SC</code>。</p>
+<span id="more"></span>
+
+<h2 id="字体定义细节"><a href="#字体定义细节" class="headerlink" title="字体定义细节"></a>字体定义细节</h2><ul>
+<li><p>英文字体在前，中文字体在后。原因很简单，中文字体包中通常包含了英文字符，反之则不成立，如果先设置了中文字体，那么英文字体根本轮不到 fallback</p>
+</li>
+<li><p>操作系统方面，Apple 系列（macOS + iOS）字体在前（直接用 -apple-system 即可），Windows 字体在后。macOS 下的用户有一定概率安装了 Windows 字体（因为安装了 Office），而 Windows 下安装 macOS 字体的用户却少之又少，所以如果 Windows 在前，那么在 macOS 下很有可能就出现「放着苹方不用却用微软雅黑」这种坑爹情况</p>
+</li>
+<li><p>根据访问网站的用户群体不同，可以考虑放弃对于老旧操作系统和浏览器的支持，比如我在使用思源宋体的时候，仅提供了 .woff 和 .woff2 格式的字体文件，完全放弃了老版本的 IE 和 Safari</p>
+</li>
+<li><p>仅对 Windows 用户使用自定义字体，比如思源系列，macOS、iOS、Linux 就使用系统自带字体就好。原因嘛当然是因为 Windows 自带的中文字体实在找不到好看的，而主动安装字体的用户毕竟还是少数</p>
+</li>
+<li><p>衬线还是非衬线完全看个人审美喜好，比如我就不觉得宋体系列好看（所以你现在看到的思源黑体，如果你是 Windows 用户的话）。同时，中文衬线搭配英文非衬线，或者反过来，中文非衬线搭配英文衬线，也完全没有问题</p>
+</li>
+<li><p><code>Georgia</code> 、<code>-apple-system</code>、 <code>&#39;Nimbus Roman No9 L&#39;</code> 分别对应 <code>Windows</code>、 <code>macOS/iOS</code>、 <code>Linux</code> 下三种系统内置英文字体（其实 <code>Georgia</code> 就已经覆盖三种系统了，后面两个只是出于保险起见）。<code>&#39;PingFang SC&#39;</code>（苹方）、<code>&#39;Hiragino Sans GB&#39;</code>（冬青黑体）、<code>&#39;Microsoft Yahei&#39;</code>（微软雅黑）对应三种系统内置中文字体（按照上文说法，Apple 系列在前，Windows 在最后），<code>&#39;Noto Sans SC&#39;</code>（思源黑体）则是允许免费使用的第三方字体，已经被我存储在本地。</p>
+</li>
+</ul>
+<h2 id="网页字体定义样式"><a href="#网页字体定义样式" class="headerlink" title="网页字体定义样式"></a>网页字体定义样式</h2><pre><code class="less">/* noto-sans-sc-300 - latin_chinese-simplified */
+@font-face &#123;
+  font-family: &#39;Noto Sans SC&#39;;
+  font-style: normal;
+  font-weight: 300;
+  src: url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-300.eot&#39;); /* IE9 Compat Modes */
+  src: local(&#39;Noto Sans SC Light&#39;), local(&#39;NotoSansSC-Light&#39;),
+    url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-300.eot?#iefix&#39;) format(&#39;embedded-opentype&#39;), /* IE6-IE8 */
+      url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-300.woff2&#39;) format(&#39;woff2&#39;),
+    /* Super Modern Browsers */ url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-300.woff&#39;) format(&#39;woff&#39;),
+    /* Modern Browsers */ url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-300.ttf&#39;) format(&#39;truetype&#39;),
+    /* Safari, Android, iOS */ url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-300.svg#NotoSansSC&#39;)
+      format(&#39;svg&#39;); /* Legacy iOS */
+&#125;
+
+/* noto-sans-sc-regular - latin_chinese-simplified */
+@font-face &#123;
+  font-family: &#39;Noto Sans SC&#39;;
+  font-style: normal;
+  font-weight: 400;
+  src: url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-regular.eot&#39;); /* IE9 Compat Modes */
+  src: local(&#39;Noto Sans SC Regular&#39;), local(&#39;NotoSansSC-Regular&#39;),
+    url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-regular.eot?#iefix&#39;) format(&#39;embedded-opentype&#39;),
+    /* IE6-IE8 */ url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-regular.woff2&#39;) format(&#39;woff2&#39;),
+    /* Super Modern Browsers */ url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-regular.woff&#39;) format(&#39;woff&#39;),
+    /* Modern Browsers */ url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-regular.ttf&#39;) format(&#39;truetype&#39;),
+    /* Safari, Android, iOS */
+      url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-regular.svg#NotoSansSC&#39;) format(&#39;svg&#39;); /* Legacy iOS */
+&#125;
+
+/* noto-sans-sc-500 - latin_chinese-simplified */
+@font-face &#123;
+  font-family: &#39;Noto Sans SC&#39;;
+  font-style: normal;
+  font-weight: 500;
+  src: url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-500.eot&#39;); /* IE9 Compat Modes */
+  src: local(&#39;Noto Sans SC Medium&#39;), local(&#39;NotoSansSC-Medium&#39;),
+    url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-500.eot?#iefix&#39;) format(&#39;embedded-opentype&#39;), /* IE6-IE8 */
+      url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-500.woff2&#39;) format(&#39;woff2&#39;),
+    /* Super Modern Browsers */ url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-500.woff&#39;) format(&#39;woff&#39;),
+    /* Modern Browsers */ url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-500.ttf&#39;) format(&#39;truetype&#39;),
+    /* Safari, Android, iOS */ url(&#39;/fonts/noto-sans-sc/noto-sans-sc-v11-latin_chinese-simplified-500.svg#NotoSansSC&#39;)
+      format(&#39;svg&#39;); /* Legacy iOS */
+&#125;
+</code></pre>
+<pre><code class="less">@import &#39;./font-face.less&#39;;
+
+html,
+body &#123;
+  font-family: Georgia, -apple-system, &#39;Nimbus Roman No9 L&#39;, &#39;PingFang SC&#39;, &#39;Hiragino Sans GB&#39;, &#39;Noto Sans SC&#39;, &#39;Microsoft Yahei&#39;,
+    &#39;WenQuanYi Micro Hei&#39;, &#39;ST Heiti&#39;, sans-serif !important;
+  font-size: 12px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+&#125;
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>给我买一杯咖啡</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/blog/uploads/images/wechat.JPG" alt="牧野ξ 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/blog/uploads/images/alipay.JPG" alt="牧野ξ 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/blog/tags/%E7%BD%91%E9%A1%B5/" rel="tag"><i class="fa fa-tag"></i> 网页</a>
+              <a href="/blog/tags/%E5%AD%97%E4%BD%93/" rel="tag"><i class="fa fa-tag"></i> 字体</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/interviews-front-end-issues/" rel="prev" title="前端问题汇总">
+                  <i class="fa fa-chevron-left"></i> 前端问题汇总
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/javascript-umi-request-interceptors/" rel="next" title="Umi Request 拦截器">
+                  Umi Request 拦截器 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">牧野ξ</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/blog/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"chivesssss","repo":"blog","client_id":"c3cc68364f4467a2a082","client_secret":"980bc7da5a170dbc25288db00b6d74d5cbd3d392","admin_user":"chivesssss","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"d36bf277eedfe124d8777a4aeaa998b2"}</script>
+<script src="/blog/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

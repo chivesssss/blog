@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg">
+  <link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7Csource+code+pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chivesssss.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":true,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+<meta name="description" content="import &amp;#123; getToken &amp;#125; from &#39;@&#x2F;util&#x2F;auth&#39; &#x2F;**  * 心跳基类  *&#x2F; export class Heart &amp;#123;   HEART_TIMEOUT &#x3D; null &#x2F;&#x2F; 心跳计时器   SERVER_HEART_TIMEOUT &#x3D; null &#x2F;&#x2F; 心跳计时器    constructor() &amp;#123;     th">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6 Class 封装原生 Websocket">
+<meta property="og:url" content="https://chivesssss.github.io/blog/javascript-es6-websocket/">
+<meta property="og:site_name" content="牧野の自留地">
+<meta property="og:description" content="import &amp;#123; getToken &amp;#125; from &#39;@&#x2F;util&#x2F;auth&#39; &#x2F;**  * 心跳基类  *&#x2F; export class Heart &amp;#123;   HEART_TIMEOUT &#x3D; null &#x2F;&#x2F; 心跳计时器   SERVER_HEART_TIMEOUT &#x3D; null &#x2F;&#x2F; 心跳计时器    constructor() &amp;#123;     th">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-18T16:01:01.000Z">
+<meta property="article:modified_time" content="2021-11-08T03:26:39.949Z">
+<meta property="article:author" content="牧野ξ">
+<meta property="article:tag" content="Javascript">
+<meta property="article:tag" content="ECMAScript 6">
+<meta property="article:tag" content="Websocket">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://chivesssss.github.io/blog/javascript-es6-websocket/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://chivesssss.github.io/blog/javascript-es6-websocket/","path":"javascript-es6-websocket/","title":"ES6 Class 封装原生 Websocket"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ES6 Class 封装原生 Websocket | 牧野の自留地</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">牧野の自留地</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">凡是过往 皆为序章</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/blog/./" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/blog/./about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/blog/./tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/blog/./categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/blog/./archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="牧野ξ"
+      src="/blog/uploads/images/avatar.png">
+  <p class="site-author-name" itemprop="name">牧野ξ</p>
+  <div class="site-description" itemprop="description">自留地，前端笔记，日记，日常记录</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/./archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/./categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/./tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chivesssss" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chivesssss" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ismartgoo@gmail.com" title="E-Mail → mailto:ismartgoo@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.tcmiao.com/" title="https:&#x2F;&#x2F;www.tcmiao.com" rel="noopener" target="_blank">tcmiao</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hentaizhou.github.io/z-blog" title="https:&#x2F;&#x2F;hentaizhou.github.io&#x2F;z-blog" rel="noopener" target="_blank">collie Z</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://chivesssss.github.io/docsify/notes" title="https:&#x2F;&#x2F;chivesssss.github.io&#x2F;docsify&#x2F;notes">notes</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chivesssss.github.io/blog/javascript-es6-websocket/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/uploads/images/avatar.png">
+      <meta itemprop="name" content="牧野ξ">
+      <meta itemprop="description" content="自留地，前端笔记，日记，日常记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牧野の自留地">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ES6 Class 封装原生 Websocket
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-18 16:01:01" itemprop="dateCreated datePublished" datetime="2021-02-18T16:01:01+00:00">2021-02-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <pre><code class="javascript">import &#123; getToken &#125; from &#39;@/util/auth&#39;
+/**
+ * 心跳基类
+ */
+export class Heart &#123;
+  HEART_TIMEOUT = null // 心跳计时器
+  SERVER_HEART_TIMEOUT = null // 心跳计时器
+
+  constructor() &#123;
+    this.timeout = 5000
+  &#125;
+  // 重置
+  reset() &#123;
+    clearTimeout(this.HEART_TIMEOUT)
+    clearTimeout(this.SERVER_HEART_TIMEOUT)
+    return this
+  &#125;
+  /**
+   * 启动心跳
+   * @param &#123;Function&#125; cb 回调函数
+   */
+  start(cb) &#123;
+    this.HEART_TIMEOUT = setTimeout(() =&gt; &#123;
+      cb()
+      this.SERVER_HEART_TIMEOUT = setTimeout(() =&gt; &#123;
+        cb()
+        // 重新开始检测
+        this.reset().start(cb())
+      &#125;, this.timeout)
+    &#125;, this.timeout)
+  &#125;
+&#125;
+</code></pre>
+<span id="more"></span>
+
+<pre><code class="javascript">export class Socket extends Heart &#123;
+  ws = null
+
+  RECONNEC_TTIMER = null // 重连计时器
+  RECONNECT_COUNT = 10 // 变量保存，防止丢失
+
+  OPTIONS = &#123;
+    url: `ws://dev.api.ucthings.com/websocket/api/ws/plugins/telemetry?Blade-Auth=bearer $&#123;getToken()&#125;`, // 链接的通道的地址
+    heartTime: 5000, // 心跳时间间隔
+    heartMsg: &#39;ping&#39;, // 心跳信息,默认为&#39;ping&#39;
+    isReconnect: true, // 是否自动重连
+    isRestory: false, // 是否销毁
+    reconnectTime: 2000, // 重连时间间隔
+    reconnectCount: 5, // 重连次数 -1 则不限制
+    openCb: null, // 连接成功的回调
+    closeCb: null, // 关闭的回调
+    messageCb: null, // 消息的回调
+    errorCb: null, // 错误的回调
+  &#125;
+  constructor(ops) &#123;
+    super()
+    Object.assign(this.OPTIONS, ops)
+    this.create()
+  &#125;
+  /**
+   * 建立连接
+   */
+  create() &#123;
+    if (!(&#39;WebSocket&#39; in window)) &#123;
+      /* eslint-disable no-new */
+      new Error(&#39;当前浏览器不支持，无法使用&#39;)
+      return
+    &#125;
+    if (!this.OPTIONS.url) &#123;
+      new Error(&#39;地址不存在，无法建立通道&#39;)
+      return
+    &#125;
+    delete this.ws
+    this.ws = new WebSocket(this.OPTIONS.url)
+    this.onopen()
+    this.onclose()
+    this.onmessage()
+  &#125;
+  /**
+   * 自定义连接成功事件
+   * 如果callback存在，调用callback，不存在调用OPTIONS中的回调
+   * @param &#123;Function&#125; callback 回调函数
+   */
+  onopen(callback) &#123;
+    this.ws.onopen = event =&gt; &#123;
+      clearTimeout(this.RECONNEC_TTIMER) // 清除重连定时器
+      // 建立心跳机制
+      super.reset().start(() =&gt; &#123;
+        this.send(this.OPTIONS.heartMsg)
+      &#125;)
+      if (typeof callback === &#39;function&#39;) &#123;
+        callback(event)
+      &#125; else &#123;
+        typeof this.OPTIONS.openCb === &#39;function&#39; &amp;&amp; this.OPTIONS.openCb(event)
+      &#125;
+    &#125;
+  &#125;
+  /**
+   * 自定义关闭事件
+   * 如果callback存在，调用callback，不存在调用OPTIONS中的回调
+   * @param &#123;Function&#125; callback 回调函数
+   */
+  onclose(callback) &#123;
+    this.ws.onclose = event =&gt; &#123;
+      super.reset()
+      if (!this.OPTIONS.isRestory) &#123;
+        Object.assign(this.OPTIONS, &#123;
+          url: `ws://dev.api.ucthings.com/websocket/api/ws/plugins/telemetry?Blade-Auth=bearer $&#123;getToken()&#125;`, // 链接的通道的地址
+        &#125;)
+        this.onreconnect()
+      &#125;
+
+      if (typeof callback === &#39;function&#39;) &#123;
+        callback(event)
+      &#125; else &#123;
+        typeof this.OPTIONS.closeCb === &#39;function&#39; &amp;&amp; this.OPTIONS.closeCb(event)
+      &#125;
+    &#125;
+  &#125;
+  /**
+   * 自定义错误事件
+   * 如果callback存在，调用callback，不存在调用OPTIONS中的回调
+   * @param &#123;Function&#125; callback 回调函数
+   */
+  onerror(callback) &#123;
+    this.ws.onerror = event =&gt; &#123;
+      if (typeof callback === &#39;function&#39;) &#123;
+        callback(event)
+      &#125; else &#123;
+        typeof this.OPTIONS.errorCb === &#39;function&#39; &amp;&amp; this.OPTIONS.errorCb(event)
+      &#125;
+    &#125;
+  &#125;
+  /**
+   * 自定义消息监听事件
+   * 如果callback存在，调用callback，不存在调用OPTIONS中的回调
+   * @param &#123;Function&#125; callback 回调函数
+   */
+  onmessage(callback) &#123;
+    this.ws.onmessage = event =&gt; &#123;
+      // 收到任何消息，重新开始倒计时心跳检测
+      super.reset().start(() =&gt; &#123;
+        this.send(this.OPTIONS.heartMsg)
+      &#125;)
+
+      this.OPTIONS.reconnectCount = this.RECONNECT_COUNT // 计数器重置
+
+      if (typeof callback === &#39;function&#39;) &#123;
+        callback(event.data)
+      &#125; else &#123;
+        typeof this.OPTIONS.messageCb === &#39;function&#39; &amp;&amp; this.OPTIONS.messageCb(event.data)
+      &#125;
+    &#125;
+  &#125;
+  /**
+   * 自定义发送消息事件
+   * @param &#123;String&#125; data 发送的文本
+   */
+  send(data) &#123;
+    if (this.ws.readyState !== this.ws.OPEN) &#123;
+      new Error(&#39;没有连接到服务器，无法推送&#39;)
+      return
+    &#125;
+    this.ws.send(data)
+  &#125;
+  /**
+   * 连接事件
+   */
+  onreconnect() &#123;
+    if (this.OPTIONS.reconnectCount &gt; 0 || this.OPTIONS.reconnectCount === -1) &#123;
+      this.RECONNEC_TTIMER = setTimeout(() =&gt; &#123;
+        this.create()
+        if (this.OPTIONS.reconnectCount !== -1) this.OPTIONS.reconnectCount--
+      &#125;, this.OPTIONS.reconnectTime)
+    &#125; else &#123;
+      clearTimeout(this.RECONNEC_TTIMER)
+      this.OPTIONS.reconnectCount = this.RECONNECT_COUNT
+    &#125;
+  &#125;
+  /**
+   * 销毁
+   */
+  destroy() &#123;
+    super.reset()
+    clearTimeout(this.RECONNEC_TTIMER) // 清除重连定时器
+    this.OPTIONS.isRestory = true
+    this.ws.close()
+  &#125;
+&#125;
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>给我买一杯咖啡</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/blog/uploads/images/wechat.JPG" alt="牧野ξ 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/blog/uploads/images/alipay.JPG" alt="牧野ξ 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/blog/tags/Javascript/" rel="tag"><i class="fa fa-tag"></i> Javascript</a>
+              <a href="/blog/tags/ECMAScript-6/" rel="tag"><i class="fa fa-tag"></i> ECMAScript 6</a>
+              <a href="/blog/tags/Websocket/" rel="tag"><i class="fa fa-tag"></i> Websocket</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/javascript-axios-request-resend/" rel="prev" title="Axios 请求二次重发">
+                  <i class="fa fa-chevron-left"></i> Axios 请求二次重发
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/others-formulae-settings/" rel="next" title="工具设置">
+                  工具设置 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">牧野ξ</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/blog/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"chivesssss","repo":"blog","client_id":"c3cc68364f4467a2a082","client_secret":"980bc7da5a170dbc25288db00b6d74d5cbd3d392","admin_user":"chivesssss","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"fb15f5fb94a92e43d694e9a69d3c529a"}</script>
+<script src="/blog/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg">
+  <link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7Csource+code+pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chivesssss.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":true,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+<meta name="description" content="通用工具类export default class func &amp;#123;   &#x2F;**    * 不为空    * @param val    * @returns &amp;#123;boolean&amp;#125;    *&#x2F;   static notEmpty(val) &amp;#123;     return !this.isEmpty(val)   &amp;#125;    &#x2F;**    * 是否为定义    *">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工具函数集合">
+<meta property="og:url" content="https://chivesssss.github.io/blog/javascript-util-functions/">
+<meta property="og:site_name" content="牧野の自留地">
+<meta property="og:description" content="通用工具类export default class func &amp;#123;   &#x2F;**    * 不为空    * @param val    * @returns &amp;#123;boolean&amp;#125;    *&#x2F;   static notEmpty(val) &amp;#123;     return !this.isEmpty(val)   &amp;#125;    &#x2F;**    * 是否为定义    *">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-25T17:19:08.000Z">
+<meta property="article:modified_time" content="2021-11-08T03:26:39.949Z">
+<meta property="article:author" content="牧野ξ">
+<meta property="article:tag" content="Javascript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://chivesssss.github.io/blog/javascript-util-functions/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://chivesssss.github.io/blog/javascript-util-functions/","path":"javascript-util-functions/","title":"工具函数集合"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>工具函数集合 | 牧野の自留地</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">牧野の自留地</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">凡是过往 皆为序章</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/blog/./" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/blog/./about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/blog/./tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/blog/./categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/blog/./archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">通用工具类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81"><span class="nav-number">2.</span> <span class="nav-text">验证</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="牧野ξ"
+      src="/blog/uploads/images/avatar.png">
+  <p class="site-author-name" itemprop="name">牧野ξ</p>
+  <div class="site-description" itemprop="description">自留地，前端笔记，日记，日常记录</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/./archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/./categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/./tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chivesssss" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chivesssss" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ismartgoo@gmail.com" title="E-Mail → mailto:ismartgoo@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.tcmiao.com/" title="https:&#x2F;&#x2F;www.tcmiao.com" rel="noopener" target="_blank">tcmiao</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hentaizhou.github.io/z-blog" title="https:&#x2F;&#x2F;hentaizhou.github.io&#x2F;z-blog" rel="noopener" target="_blank">collie Z</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://chivesssss.github.io/docsify/notes" title="https:&#x2F;&#x2F;chivesssss.github.io&#x2F;docsify&#x2F;notes">notes</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chivesssss.github.io/blog/javascript-util-functions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/uploads/images/avatar.png">
+      <meta itemprop="name" content="牧野ξ">
+      <meta itemprop="description" content="自留地，前端笔记，日记，日常记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牧野の自留地">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          工具函数集合
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-25 17:19:08" itemprop="dateCreated datePublished" datetime="2020-02-25T17:19:08+00:00">2020-02-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="通用工具类"><a href="#通用工具类" class="headerlink" title="通用工具类"></a>通用工具类</h2><pre><code class="javascript">export default class func &#123;
+  /**
+   * 不为空
+   * @param val
+   * @returns &#123;boolean&#125;
+   */
+  static notEmpty(val) &#123;
+    return !this.isEmpty(val)
+  &#125;
+
+  /**
+   * 是否为定义
+   * @param val
+   * @returns &#123;boolean&#125;
+   */
+  static isUndefined(val) &#123;
+    return val === null || typeof val === &#39;undefined&#39;
+  &#125;
+
+  /**
+   * 为空
+   * @param val
+   * @returns &#123;boolean&#125;
+   */
+  static isEmpty(val) &#123;
+    if (val === null || typeof val === &#39;undefined&#39; || (typeof val === &#39;string&#39; &amp;&amp; val === &#39;&#39; &amp;&amp; val !== &#39;undefined&#39;)) &#123;
+      return true
+    &#125;
+    return false
+  &#125;
+
+  /**
+   * 强转int型
+   * @param val
+   * @param defaultValue
+   * @returns &#123;number&#125;
+   */
+  static toInt(val, defaultValue) &#123;
+    if (this.isEmpty(val)) &#123;
+      return defaultValue === undefined ? -1 : defaultValue
+    &#125;
+    const num = parseInt(val, 0)
+    return Number.isNaN(num) ? (defaultValue === undefined ? -1 : defaultValue) : num
+  &#125;
+
+  /**
+   * Json强转为Form类型
+   * @param obj
+   * @returns &#123;FormData&#125;
+   */
+  static toFormData(obj) &#123;
+    const data = new FormData()
+    Object.keys(obj).forEach(key =&gt; &#123;
+      data.append(key, Array.isArray(obj[key]) ? obj[key].join(&#39;,&#39;) : obj[key])
+    &#125;)
+    return data
+  &#125;
+
+  /**
+   * date类转为字符串格式
+   * @param date
+   * @param format
+   * @returns &#123;null&#125;
+   */
+  static format(date, format = &#39;YYYY-MM-DD HH:mm:ss&#39;) &#123;
+    return date ? date.format(format) : null
+  &#125;
+
+  /**
+   * 根据逗号联合
+   * @param arr
+   * @returns &#123;string&#125;
+   */
+  static join(arr) &#123;
+    return arr ? arr.join(&#39;,&#39;) : &#39;&#39;
+  &#125;
+
+  /**
+   * 根据逗号分隔
+   * @param str
+   * @returns &#123;string&#125;
+   */
+  static split(str) &#123;
+    return str ? String(str).split(&#39;,&#39;) : &#39;&#39;
+  &#125;
+&#125;
+</code></pre>
+<span id="more"></span>
+
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><pre><code class="javascript">/* 合法uri*/
+export function validateURL(textval) &#123;
+  const urlregex = /^(https?|ftp):\/\/([a-zA-Z0-9.-]+(:[a-zA-Z0-9.&amp;%$-]+)*@)*((25[0-5]|2[0-4][0-9]|1[0-9]&#123;2&#125;|[1-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|1[0-9]&#123;2&#125;|[1-9]?[0-9]))&#123;3&#125;|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]&#123;2&#125;))(:[0-9]+)*(\/($|[a-zA-Z0-9.,?&#39;\\+&amp;%$#=~_-]+))*$/
+  return urlregex.test(textval)
+&#125;
+/**
+ * 邮箱
+ * @param &#123;*&#125; s
+ */
+export function isEmail(s) &#123;
+  return /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]&#123;2,3&#125;)&#123;1,2&#125;)$/.test(s)
+&#125;
+
+/**
+ * 手机号码
+ * @param &#123;*&#125; s
+ */
+export function isMobile(s) &#123;
+  return /^1[0-9]&#123;10&#125;$/.test(s)
+&#125;
+
+/**
+ * 电话号码
+ * @param &#123;*&#125; s
+ */
+export function isPhone(s) &#123;
+  return /^([0-9]&#123;3,4&#125;-)?[0-9]&#123;7,8&#125;$/.test(s)
+&#125;
+
+/**
+ * URL地址
+ * @param &#123;*&#125; s
+ */
+export function isURL(s) &#123;
+  return /^http[s]?:\/\/.*/.test(s)
+&#125;
+
+/* 小写字母*/
+export function validateLowerCase(str) &#123;
+  const reg = /^[a-z]+$/
+  return reg.test(str)
+&#125;
+
+/* 大写字母*/
+export function validateUpperCase(str) &#123;
+  const reg = /^[A-Z]+$/
+  return reg.test(str)
+&#125;
+
+/* 大小写字母*/
+export function validatAlphabets(str) &#123;
+  const reg = /^[A-Za-z]+$/
+  return reg.test(str)
+&#125;
+/*验证pad还是pc*/
+export const vaildatePc = function () &#123;
+  const userAgentInfo = navigator.userAgent
+  const Agents = [&#39;Android&#39;, &#39;iPhone&#39;, &#39;SymbianOS&#39;, &#39;Windows Phone&#39;, &#39;iPad&#39;, &#39;iPod&#39;]
+  let flag = true
+  for (var v = 0; v &lt; Agents.length; v++) &#123;
+    if (userAgentInfo.indexOf(Agents[v]) &gt; 0) &#123;
+      flag = false
+      break
+    &#125;
+  &#125;
+  return flag
+&#125;
+/**
+ * validate email
+ * @param email
+ * @returns &#123;boolean&#125;
+ */
+export function validateEmail(email) &#123;
+  const re = /^(([^&lt;&gt;()\\[\]\\.,;:\s@&quot;]+(\.[^&lt;&gt;()\\[\]\\.,;:\s@&quot;]+)*)|(&quot;.+&quot;))@((\[[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]&#123;2,&#125;))$/
+  return re.test(email)
+&#125;
+
+/**
+ * 判断身份证号码
+ */
+export function cardid(code) &#123;
+  let list = []
+  let result = true
+  let msg = &#39;&#39;
+  var city = &#123;
+    11: &#39;北京&#39;,
+    12: &#39;天津&#39;,
+    13: &#39;河北&#39;,
+    14: &#39;山西&#39;,
+    15: &#39;内蒙古&#39;,
+    21: &#39;辽宁&#39;,
+    22: &#39;吉林&#39;,
+    23: &#39;黑龙江 &#39;,
+    31: &#39;上海&#39;,
+    32: &#39;江苏&#39;,
+    33: &#39;浙江&#39;,
+    34: &#39;安徽&#39;,
+    35: &#39;福建&#39;,
+    36: &#39;江西&#39;,
+    37: &#39;山东&#39;,
+    41: &#39;河南&#39;,
+    42: &#39;湖北 &#39;,
+    43: &#39;湖南&#39;,
+    44: &#39;广东&#39;,
+    45: &#39;广西&#39;,
+    46: &#39;海南&#39;,
+    50: &#39;重庆&#39;,
+    51: &#39;四川&#39;,
+    52: &#39;贵州&#39;,
+    53: &#39;云南&#39;,
+    54: &#39;西藏 &#39;,
+    61: &#39;陕西&#39;,
+    62: &#39;甘肃&#39;,
+    63: &#39;青海&#39;,
+    64: &#39;宁夏&#39;,
+    65: &#39;新疆&#39;,
+    71: &#39;台湾&#39;,
+    81: &#39;香港&#39;,
+    82: &#39;澳门&#39;,
+    91: &#39;国外 &#39;,
+  &#125;
+  if (!validatenull(code)) &#123;
+    if (code.length == 18) &#123;
+      if (!code || !/(^\d&#123;18&#125;$)|(^\d&#123;17&#125;(\d|X|x)$)/.test(code)) &#123;
+        msg = &#39;证件号码格式错误&#39;
+      &#125; else if (!city[code.substr(0, 2)]) &#123;
+        msg = &#39;地址编码错误&#39;
+      &#125; else &#123;
+        //18位身份证需要验证最后一位校验位
+        code = code.split(&#39;&#39;)
+        //∑(ai×Wi)(mod 11)
+        //加权因子
+        var factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]
+        //校验位
+        var parity = [1, 0, &#39;X&#39;, 9, 8, 7, 6, 5, 4, 3, 2, &#39;x&#39;]
+        var sum = 0
+        var ai = 0
+        var wi = 0
+        for (var i = 0; i &lt; 17; i++) &#123;
+          ai = code[i]
+          wi = factor[i]
+          sum += ai * wi
+        &#125;
+        if (parity[sum % 11] != code[17]) &#123;
+          msg = &#39;证件号码校验位错误&#39;
+        &#125; else &#123;
+          result = false
+        &#125;
+      &#125;
+    &#125; else &#123;
+      msg = &#39;证件号码长度不为18位&#39;
+    &#125;
+  &#125; else &#123;
+    msg = &#39;证件号码不能为空&#39;
+  &#125;
+  list.push(result)
+  list.push(msg)
+  return list
+&#125;
+/**
+ * 判断手机号码是否正确
+ */
+export function isvalidatemobile(phone) &#123;
+  let list = []
+  let result = true
+  let msg = &#39;&#39;
+  var isPhone = /^0\d&#123;2,3&#125;-?\d&#123;7,8&#125;$/
+  //增加134 减少|1349[0-9]&#123;7&#125;，增加181,增加145，增加17[678]
+  if (!validatenull(phone)) &#123;
+    if (phone.length == 11) &#123;
+      if (isPhone.test(phone)) &#123;
+        msg = &#39;手机号码格式不正确&#39;
+      &#125; else &#123;
+        result = false
+      &#125;
+    &#125; else &#123;
+      msg = &#39;手机号码长度不为11位&#39;
+    &#125;
+  &#125; else &#123;
+    msg = &#39;手机号码不能为空&#39;
+  &#125;
+  list.push(result)
+  list.push(msg)
+  return list
+&#125;
+/**
+ * 判断姓名是否正确
+ */
+export function validatename(name) &#123;
+  var regName = /^[\u4e00-\u9fa5]&#123;2,4&#125;$/
+  if (!regName.test(name)) return false
+  return true
+&#125;
+/**
+ * 判断是否为整数
+ */
+export function validatenum(num, type) &#123;
+  let regName = /[^\d.]/g
+  if (type == 1) &#123;
+    if (!regName.test(num)) return false
+  &#125; else if (type == 2) &#123;
+    regName = /[^\d]/g
+    if (!regName.test(num)) return false
+  &#125;
+  return true
+&#125;
+/**
+ * 判断是否为小数
+ */
+export function validatenumord(num, type) &#123;
+  let regName = /[^\d.]/g
+  if (type == 1) &#123;
+    if (!regName.test(num)) return false
+  &#125; else if (type == 2) &#123;
+    regName = /[^\d.]/g
+    if (!regName.test(num)) return false
+  &#125;
+  return true
+&#125;
+/**
+ * 判断是否为空
+ */
+export function validatenull(val) &#123;
+  if (typeof val == &#39;boolean&#39;) &#123;
+    return false
+  &#125;
+  if (typeof val == &#39;number&#39;) &#123;
+    return false
+  &#125;
+  if (val instanceof Array) &#123;
+    if (val.length == 0) return true
+  &#125; else if (val instanceof Object) &#123;
+    if (JSON.stringify(val) === &#39;&#123;&#125;&#39;) return true
+  &#125; else &#123;
+    if (val == &#39;null&#39; || val == null || val == &#39;undefined&#39; || val == undefined || val == &#39;&#39;) return true
+    return false
+  &#125;
+  return false
+&#125;
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>给我买一杯咖啡</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/blog/uploads/images/wechat.JPG" alt="牧野ξ 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/blog/uploads/images/alipay.JPG" alt="牧野ξ 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/blog/tags/Javascript/" rel="tag"><i class="fa fa-tag"></i> Javascript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/interviews-juejin-front-end-interview/" rel="prev" title="前端（掘金小册）">
+                  <i class="fa fa-chevron-left"></i> 前端（掘金小册）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/interviews-front-end-issues/" rel="next" title="前端问题汇总">
+                  前端问题汇总 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">牧野ξ</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/blog/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"chivesssss","repo":"blog","client_id":"c3cc68364f4467a2a082","client_secret":"980bc7da5a170dbc25288db00b6d74d5cbd3d392","admin_user":"chivesssss","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"4fd224ed3a574796efe8a8db8bf970c6"}</script>
+<script src="/blog/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

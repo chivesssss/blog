@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg">
+  <link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/chivesssss/picture-store@master/uPic/favicon.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7Csource+code+pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chivesssss.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":true,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+<meta name="description" content=";(function () &amp;#123;   &#x2F;&#x2F; 一个函数无论我们 bind 几次， this 永远由第一次 bind 决定   const a &#x3D; &amp;#123;&amp;#125;   const fn &#x3D; function () &amp;#123;     console.log(this)   &amp;#125;   fn.bind().bind(a)()    &#x2F;&#x2F; 换种写法   const fn2 &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="相关自定义函数">
+<meta property="og:url" content="https://chivesssss.github.io/blog/interviews-custom-function/">
+<meta property="og:site_name" content="牧野の自留地">
+<meta property="og:description" content=";(function () &amp;#123;   &#x2F;&#x2F; 一个函数无论我们 bind 几次， this 永远由第一次 bind 决定   const a &#x3D; &amp;#123;&amp;#125;   const fn &#x3D; function () &amp;#123;     console.log(this)   &amp;#125;   fn.bind().bind(a)()    &#x2F;&#x2F; 换种写法   const fn2 &#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-05-29T21:44:39.000Z">
+<meta property="article:modified_time" content="2021-11-08T03:26:39.353Z">
+<meta property="article:author" content="牧野ξ">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="function">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://chivesssss.github.io/blog/interviews-custom-function/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://chivesssss.github.io/blog/interviews-custom-function/","path":"interviews-custom-function/","title":"相关自定义函数"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>相关自定义函数 | 牧野の自留地</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">牧野の自留地</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">凡是过往 皆为序章</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/blog/./" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/blog/./about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/blog/./tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/blog/./categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/blog/./archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="牧野ξ"
+      src="/blog/uploads/images/avatar.png">
+  <p class="site-author-name" itemprop="name">牧野ξ</p>
+  <div class="site-description" itemprop="description">自留地，前端笔记，日记，日常记录</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/./archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/./categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/./tags/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chivesssss" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chivesssss" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ismartgoo@gmail.com" title="E-Mail → mailto:ismartgoo@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.tcmiao.com/" title="https:&#x2F;&#x2F;www.tcmiao.com" rel="noopener" target="_blank">tcmiao</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://hentaizhou.github.io/z-blog" title="https:&#x2F;&#x2F;hentaizhou.github.io&#x2F;z-blog" rel="noopener" target="_blank">collie Z</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://chivesssss.github.io/docsify/notes" title="https:&#x2F;&#x2F;chivesssss.github.io&#x2F;docsify&#x2F;notes">notes</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chivesssss.github.io/blog/interviews-custom-function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/uploads/images/avatar.png">
+      <meta itemprop="name" content="牧野ξ">
+      <meta itemprop="description" content="自留地，前端笔记，日记，日常记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="牧野の自留地">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          相关自定义函数
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-05-29 21:44:39" itemprop="dateCreated datePublished" datetime="2018-05-29T21:44:39+00:00">2018-05-29</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <span id="more"></span>
+
+<pre><code class="javascript">;(function () &#123;
+  // 一个函数无论我们 bind 几次， this 永远由第一次 bind 决定
+  const a = &#123;&#125;
+  const fn = function () &#123;
+    console.log(this)
+  &#125;
+  fn.bind().bind(a)()
+
+  // 换种写法
+  const fn2 = function () &#123;
+    return function () &#123;
+      return fn.apply()
+    &#125;.apply(a)
+  &#125;
+  fn2()
+&#125;)()
+
+// 闭包第一题
+;(function () &#123;
+  function createIncrement() &#123;
+    let count = 0
+    function increment() &#123;
+      count++
+    &#125;
+
+    let message = `Count is $&#123;count&#125;`
+    function log() &#123;
+      console.log(message)
+    &#125;
+
+    return [increment, log]
+  &#125;
+
+  const [increment, log] = createIncrement()
+  increment()
+  increment()
+  increment()
+  log() // =&gt; ?
+&#125;)()
+
+// 闭包第二题
+;(function () &#123;
+  function fn() &#123;
+    a = 0
+    return function (b) &#123;
+      return b + a++
+    &#125;
+  &#125;
+  var f = fn()
+  console.log(f(5)) // 5
+  console.log(fn()(5)) // 5
+  console.log(f(5)) // 6
+  console.log(a) // 2
+&#125;)()
+;(function () &#123;
+  /**
+   * 简易版深拷贝函数
+   */
+  const deepClone = obj =&gt; &#123;
+    if (typeof obj !== &#39;object&#39;) &#123;
+      throw new Error(&#39;发生错误&#39;)
+    &#125;
+
+    const newObj = obj instanceof Array ? [] : &#123;&#125;
+
+    for (const key in obj) &#123;
+      if (Object.hasOwnProperty.call(obj, key)) &#123;
+        const value = obj[key]
+        newObj[key] = typeof value === &#39;object&#39; ? deepClone(value) : value
+      &#125;
+    &#125;
+    return newObj
+  &#125;
+&#125;)()
+;(function () &#123;
+  // 变量提升转换前
+  console.log(a) // undefined
+  var a = 1
+  function b() &#123;
+    console.log(a)
+  &#125;
+  b() // 1
+
+  // 变量提升转换前后
+  var a = undefined
+  console.log(a) // undefined
+  a = 1
+  function b() &#123;
+    console.log(a)
+  &#125;
+  b() // 1
+&#125;)()
+;(function () &#123;
+  /**
+   * 组合继承：子类的构造函数中通过 Parent.call(this) 继承父类的属性，
+   * 然后改变子类的原型为 new Parent() 来继承父类的函数
+   */
+  function Parent(value) &#123;
+    this.value = value
+  &#125;
+
+  Parent.prototype.getValue = function () &#123;
+    console.log(this.value)
+  &#125;
+
+  function Child(value) &#123;
+    Parent.call(this, value) // 构造函数可以传参，不会与父类引用属性共享
+  &#125;
+
+  Child.prototype = new Parent() // 可以复用父类的函数，但是子类原型上多了不需要的父类的属性
+
+  const child = new Child(1)
+
+  child.getValue() // 1
+
+  child instanceof Parent // true
+
+  /**
+   * Class 继承，关键点在于 extends、super
+   */
+  class Parent &#123;
+    constructor(value) &#123;
+      this.value = value
+    &#125;
+
+    getValue() &#123;
+      console.log(this.value)
+    &#125;
+  &#125;
+
+  class Child extends Parent &#123;
+    constructor(value) &#123;
+      super(value)
+      this.value = value
+    &#125;
+  &#125;
+
+  const child = new Child(1)
+
+  child.getValue() // 1
+
+  child instanceof Parent // true
+&#125;)()
+;(function () &#123;
+  /**
+   * 通过自定义 set 和 get 函数的方式，在原本的逻辑中插入了我们的函数
+   * 逻辑（回调函数），实现了在对对象任何属性进行读写时发出通知
+   */
+  let obj = &#123; a: 1 &#125;
+
+  let onWatch = (target, setCallback, getCallback) =&gt; &#123;
+    return new Proxy(target, &#123;
+      set(target, key, value, receiver) &#123;
+        setCallback(key, value)
+        return Reflect.set(target, key, value, receiver)
+      &#125;,
+      get(target, key, receiver) &#123;
+        getCallback(target, key)
+
+        // return target[key]
+        return Reflect.get(target, key, receiver)
+      &#125;,
+    &#125;)
+  &#125;
+
+  let p = onWtch(
+    obj,
+    (k, v) =&gt; &#123;
+      // 数据变化，响应式监听
+      console.log(`监测到属性$&#123;k&#125;改变为$&#123;v&#125;`)
+    &#125;,
+    (t, k) =&gt; &#123;
+      // 数据读取，响应式派发
+      console.log(`&#39;$&#123;k&#125;&#39; = $&#123;t[k]&#125;`)
+    &#125;
+  )
+
+  p.a = 3 // 监测到属性a改变为3
+  p.a // &#39;a&#39; = 3
+&#125;)()
+;(function () &#123;
+  /**
+   * 手写 Promise
+   * 作用：1、消灭嵌套调用；2、合并多个任务的请求结果
+   * API： Promise.resolve, Promise.reject, Promise.prototype.catch,
+   * Promise.prototype.finally, Promise.all, Promise.race
+   */
+  const PENDING = &#39;pending&#39;
+  const RESOLVED = &#39;resolved&#39;
+  const REJECTED = &#39;rejected&#39;
+  function MyPromise(executor) &#123;
+    this.status = PENDING
+    this.value = undefined
+    this.reason = undefined
+
+    this.onResolvedCallbacks = []
+    this.onRejectedCallbacks = []
+
+    const resolve = value =&gt; &#123;
+      if (this.status === PENDING) &#123;
+        this.value = value
+        this.status = RESOLVED
+
+        this.onResolvedCallbacks.forEach(fn =&gt; fn())
+      &#125;
+    &#125;
+
+    const reject = reason =&gt; &#123;
+      if (this.status === PENDING) &#123;
+        this.reason = reason
+        this.status = REJECTED
+
+        this.onRejectedCallbacks.forEach(fn =&gt; fn())
+      &#125;
+    &#125;
+
+    try &#123;
+      executor(resolve, reject)
+    &#125; catch (error) &#123;
+      reject(error)
+    &#125;
+  &#125;
+
+  MyPromise.prototype.then = function (onResolved, onRejected) &#123;
+    onResolved = typeof onResolved === &#39;function&#39; ? onResolved : v =&gt; v
+    onRejected =
+      typeof onRejected === &#39;function&#39;
+        ? onRejected
+        : err =&gt; &#123;
+            throw err
+          &#125;
+
+    if (this.status === RESOLVED) &#123;
+      onResolved(this.value)
+    &#125;
+
+    if (this.status === REJECTED) &#123;
+      onRejected(this.reason)
+    &#125;
+
+    if (this.status === PENDING) &#123;
+      this.onResolvedCallbacks.push(() =&gt; &#123;
+        onResolved(this.value)
+      &#125;)
+
+      this.onRejectedCallbacks.push(() =&gt; &#123;
+        onRejected(this.reason)
+      &#125;)
+    &#125;
+  &#125;
+&#125;)()
+;(function () &#123;
+  function mySetInterval(callback, interval) &#123;
+    let timer
+    const now = Date.now
+    let startTime = now()
+    let endTime = startTime
+
+    const loop = () =&gt; &#123;
+      timer = window.requestAnimationFrame(loop)
+      endTime = now()
+      if (endTime - startTime &gt;= interval) &#123;
+        startTime = endTime = now()
+        callback(timer)
+      &#125;
+    &#125;
+
+    timer = window.requestAnimationFrame(loop)
+    return timer
+  &#125;
+
+  let a = 0
+  mySetInterval(timer =&gt; &#123;
+    console.log(&#39;1&#39;)
+    a++
+    if (a === 3) &#123;
+      window.cancelAnimationFrame(timer)
+    &#125;
+  &#125;, 1000)
+&#125;)()
+;(function () &#123;
+  /**
+   * Event loop（执行一个宏任务，执行所有微任务，再继续如此循环）
+   * log:1,4,8,7,3,9,6,5,2
+   */
+  ;(function () &#123;
+    function test() &#123;
+      console.log(1)
+      setTimeout(function () &#123;
+        console.log(2)
+      &#125;, 1000)
+    &#125;
+
+    test()
+
+    setTimeout(function () &#123;
+      Promise.resolve().then(() =&gt; &#123;
+        console.log(9)
+      &#125;)
+      console.log(3)
+    &#125;)
+
+    new Promise(function (resolve) &#123;
+      console.log(4)
+      setTimeout(function () &#123;
+        console.log(5)
+      &#125;, 100)
+      resolve()
+    &#125;).then(function () &#123;
+      setTimeout(function () &#123;
+        console.log(6)
+      &#125;, 0)
+      console.log(7)
+    &#125;)
+
+    console.log(8)
+  &#125;)()
+&#125;)()
+;(function () &#123;
+  /**
+   * apply、call 的模拟实现，这两个方法被调用时，函数会立即执行，并返回结果
+   */
+  Function.prototype.myCall = function (context) &#123;
+    const context = context || window
+    context.fn = this
+    const args = []
+    for (let i = 1; i &lt; arguments.length; i++) &#123;
+      args.push(&#39;arguments[&#39; + i + &#39;]&#39;) // 由于后面会使用 eval 表达式，所以不能直接 push 具体的值
+    &#125;
+    const result = eval(&#39;context.fn(&#39; + args + &#39;)&#39;)
+    delete context.fn
+    return result
+  &#125;
+
+  Function.prototype.myApply = function (context, arr) &#123;
+    const context = Object(context) || window
+    context.fn = this
+    let result
+    if (!arr) &#123;
+      result = context.fn()
+    &#125; else &#123;
+      const args = []
+      for (let i = 0; i &lt; arr.length; i++) &#123;
+        args.push(&#39;arr[&#39; + i + &#39;]&#39;)
+      &#125;
+      result = eval(&#39;context.fn(&#39; + args + &#39;)&#39;)
+    &#125;
+    delete context.fn
+    return result
+  &#125;
+  /**
+   * bind 的模拟实现。bind 方法会创建一个新函数，这个函数并不会立即执行。当这个新函数被调用时，bind的第一个参数将作为它运行时的 this，之后的一序列参数将会在传递的实参前传入作为它的参数。
+   */
+  Function.prototype.myBind = function (context) &#123;
+    if (typeof this !== &#39;function&#39;) &#123;
+      throw new Error(&#39;Function.prototype.bind - what is trying to be bound is not callable&#39;)
+    &#125;
+
+    const self = this
+    const args = Array.prototype.slice.call(arguments, 1) // 此处的 arguments 为 bind 时传递的参数
+    const fNOP = function () &#123;&#125;
+
+    const fbound = function () &#123;
+      /**
+       * 当作为构造函数时，this 指向实例，self 指向绑定函数，因为下面修改了 fbound.prototype 为 绑定函数的
+       * prototype，此时结果为 true，当结果为 true 的时候，this 指向实例。
+       *
+       * 当作为普通函数时，this 指向 window，self 指向绑定函数，此时结果为 false，当结果为 false 的时候，
+       * this 指向绑定的 context。
+       */
+      self.apply(this instanceof self ? this : context, args.concat(Array.prototype.slice.call(arguments))) // 此处的 arguments 返回的函数执行时的参数,两处参数合并起来成为 bind 函数完整的参数
+    &#125;
+
+    fNOP.prototype = this.prototype // 空函数中转，防止改变 fbound 函数的 prototype 时改变了原来函数的原型
+    fbound.prototype = new fNOP()
+
+    return fbound
+  &#125;
+&#125;)()
+;(function () &#123;
+  /**
+   * 模拟实现 new 操作。e.g. myNew(Person,18)
+   * @returns 新对象
+   */
+  function myNew() &#123;
+    const obj = new Object(), // 用new Object() 的方式新建了一个对象 obj
+      Constructor = [].shift.call(arguments) // 取出第一个参数，就是我们要传入的构造函数。此外因为 shift 会修改原数组，所以 arguments 会被去除第一个参数
+
+    obj.__proto__ = Constructor.prototype
+
+    // function Person(name, age) &#123;
+    //   this.strength = 60
+    //   this.age = age
+
+    //   return &#123;
+    //     name: name,
+    //     habit: &#39;Games&#39;,
+    //   &#125;
+    // &#125;
+
+    // var person = new Person(&#39;Kevin&#39;, &#39;18&#39;)
+
+    // console.log(person.name) // Kevin
+    // console.log(person.habit) // Games
+    // console.log(person.strength) // undefined
+    // console.log(person.age) // undefined
+
+    const result = Constructor.apply(obj, arguments)
+
+    return typeof result === &#39;object&#39; ? result : obj // 构造函数返回值如果是一个对象，就返回这个对象，如果不是，就该返回什么就返回什么
+  &#125;
+&#125;)()
+;(function () &#123;
+  /**
+   * 自定义instanceof函数
+   */
+  function myInstanceof(left, right) &#123;
+    const prototype = right.prototype
+    let left = left.__proto__
+
+    while (true) &#123;
+      if (left === null || left === undefined) &#123;
+        return false
+      &#125;
+
+      if (prototype === left) &#123;
+        return true
+      &#125;
+
+      left = left.__proto__
+    &#125;
+  &#125;
+&#125;)()
+;(function () &#123;
+  // 以下会先打印冒泡然后是捕获
+  node.addEventListener(
+    &#39;click&#39;,
+    event =&gt; &#123;
+      console.log(&#39;冒泡&#39;)
+    &#125;,
+    false
+  )
+
+  node.addEventListener(
+    &#39;click&#39;,
+    event =&gt; &#123;
+      console.log(&#39;捕获&#39;)
+    &#125;,
+    true
+  )
+&#125;)()
+;(function () &#123;
+  /**
+   * url 链接返回的是：[callbackName](&#123;code:0, data:[], msg: &#39;&#39;&#125;)
+   * 在执行栈这个函数会立即执行
+   */
+  const jsonp = (url, callbackName, success) =&gt; &#123;
+    let script = document.createElement(&#39;script&#39;)
+    script.src = url
+    script.async = true
+    script.type = &#39;text/script&#39;
+    window[callbackName] = function (data) &#123;
+      success &amp;&amp; success(data)
+    &#125;
+    document.body.appendChild(script)
+  &#125;
+
+  jsonp(&#39;https://xxx&#39;, &#39;callback&#39;, function (value) &#123;
+    console.log(value)
+  &#125;)
+&#125;)()
+;(function () &#123;
+  /**
+   * 防抖：事件触发，N秒之后执行。期间再次触发，则重新计算
+   */
+  const debounce = (fn, wait, immediate) =&gt; &#123;
+    let timer
+
+    const debounced = function (...args) &#123;
+      timer &amp;&amp; clearTimeout(timer)
+      if (immediate) &#123;
+        const callNow = !timer
+
+        if (callNow) &#123;
+          fn.apply(this, args)
+        &#125;
+
+        timer = setTimeout(() =&gt; &#123;
+          timer = null
+        &#125;, wait)
+      &#125; else &#123;
+        timer = setTimeout(() =&gt; &#123;
+          fn.apply(this, args)
+        &#125;, wait)
+      &#125;
+    &#125;
+
+    return debounced
+  &#125;
+&#125;)()
+;(function () &#123;
+  /**
+   * 节流：事件触发，马上执行，N秒之内，事件不再执行，N秒结束之时，再执行一次
+   */
+  const throttle = (fn, wait) =&gt; &#123;
+    let timer,
+      previous = 0
+    const throttled = function (...args) &#123;
+      const now = +new Date()
+      const remaining = wait - (now - previous)
+
+      if (remaining &lt;= 0 || remaining &gt; wait) &#123;
+        if (timer) &#123;
+          clearTimeout(timer)
+          timer = null
+        &#125;
+        previous = now
+        fn.apply(this, args)
+      &#125; else if (!timer) &#123;
+        timer = setTimeout(() =&gt; &#123;
+          fn.apply(this, args)
+          previous = +new Date()
+          timer = null
+        &#125;, remaining)
+      &#125;
+    &#125;
+
+    return throttled
+  &#125;
+&#125;)()
+;(function () &#123;
+  // 通过Dep解耦属性的依赖和更新操作
+  class Dep &#123;
+    constructor() &#123;
+      this.subs = []
+    &#125;
+    // 收集依赖
+    add(sub) &#123;
+      this.subs.push(sub)
+    &#125;
+    // 通知更新
+    notify() &#123;
+      this.subs.forEach(sub =&gt; &#123;
+        sub.update()
+      &#125;)
+    &#125;
+  &#125;
+  Dep.target = null // 全局属性，通过该属性配置watcher
+
+  class Watcher &#123;
+    constructor(obj, key, callback) &#123;
+      // 将 Dep.target 指向自己
+      // 然后触发属性的 getter 触发监听
+      // 最后将 Dep.target 置为空
+      Dep.target = this
+      this.callback = callback
+      this.obj = obj
+      this.key = key
+      this.val = obj[key]
+      Dep.target = null
+    &#125;
+
+    update() &#123;
+      // 获得最新值
+      this.val = this.obj[this.key]
+      // 调用 update 方法 更新 dom
+      this.callback(this.val)
+    &#125;
+  &#125;
+
+  // 观察、监听
+  function observe(obj) &#123;
+    if (!obj || typeof obj !== &#39;object&#39;) &#123;
+      return
+    &#125;
+
+    Object.keys(obj).forEach(key =&gt; &#123;
+      defineReactive(obj, key, obj[key])
+    &#125;)
+  &#125;
+  function defineReactive(obj, key, val) &#123;
+    // 递归子属性
+    observe(val)
+    let dp = new Dep()
+
+    Object.defineProperty(obj, key, &#123;
+      enumerable: true, // 可枚举
+      configurable: true, // 可配置
+      // 自定义函数
+      set: function reactiveSetter(newVal) &#123;
+        val = newVal
+        dp.notify() // 值变了以后才去通知
+      &#125;,
+      get: function reactiveGetter() &#123;
+        if (Dep.target) &#123;
+          // 只有在实例化watcher的时候依赖才会被添加进去
+          dp.add(Dep.target)
+        &#125;
+        return val
+      &#125;,
+    &#125;)
+  &#125;
+
+  var data = &#123; name: &#39;xiaoming&#39; &#125;
+  observe(data)
+  function update(value) &#123;
+    console.log(`watch 到新的值：$&#123;value&#125;`)
+  &#125;
+
+  new Watcher(data, &#39;name&#39;, update)
+
+  data.name = &#39;xiaowang&#39;
+&#125;)()
+;(function () &#123;
+  // 给 localstorage 设置过期时间
+  Storage.prototype.setExpire = (key, value, expire) =&gt; &#123;
+    let obj = &#123;
+      data: value,
+      time: Date.now(),
+      expire: expire,
+    &#125;
+    localStorage.setItem(key, JSON.stringify(obj))
+  &#125;
+
+  Storage.prototype.getExpire = key =&gt; &#123;
+    let val = localStorage.getItem(key)
+    if (!val) &#123;
+      return val
+    &#125;
+    val = JSON.parse(val)
+    if (Date.now() - val.time &gt; val.expire) &#123;
+      localStorage.removeItem(key)
+      return null
+    &#125;
+    return val.data
+  &#125;
+&#125;)()
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>给我买一杯咖啡</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/blog/uploads/images/wechat.JPG" alt="牧野ξ 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/blog/uploads/images/alipay.JPG" alt="牧野ξ 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/blog/tags/javascript/" rel="tag"><i class="fa fa-tag"></i> javascript</a>
+              <a href="/blog/tags/function/" rel="tag"><i class="fa fa-tag"></i> function</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/interviews-interview/" rel="next" title="面试资料">
+                  面试资料 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">牧野ξ</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/blog/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"chivesssss","repo":"blog","client_id":"c3cc68364f4467a2a082","client_secret":"980bc7da5a170dbc25288db00b6d74d5cbd3d392","admin_user":"chivesssss","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"2b84f31483447c6197bcb2460aba8612"}</script>
+<script src="/blog/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
